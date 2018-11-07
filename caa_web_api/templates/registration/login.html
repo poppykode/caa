@@ -1,0 +1,102 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="caa" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Common Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Fontawesome Css -->
+    <link href="{% static 'css/fontawesome-all.css' %}" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+</head>
+
+<body style="background:#006CB4; height:100%;">
+ <div class="container">
+<div class="row caa-pt caa-pb">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 caa-background">
+    <hr>
+       <img src="{% static 'images/logo.png' %}" alt="" width="150px" height="auto" class="caa-img ">
+   <hr>
+  
+       <form action="{% url 'login' %}" method="post">
+               {% csrf_token %}
+           <div class="form-group">
+               <p>{{ form.username|as_crispy_field}}</p>
+           </div>
+           <div class="form-group">
+               <p>{{ form.password|as_crispy_field }}</p>
+           </div>
+           <div class="d-sm-flex justify-content-between">
+               <div class="form-check col-md-6 text-sm-left text-center">
+                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                   <label class="form-check-label" for="exampleCheck1">Remember me</label>
+               </div>
+               <div class="form-check-label">
+                   <a href="forgot.html">forgot password?</a>
+               </div>
+           </div>
+           <div style="padding-bottom:10px;">
+           <input type="submit" value="Login"  class="btn btn-primary btn-block error-w3l-btn mt-sm-5 mt-3 px-4" />
+           <input type="hidden" name="next" value="{{ next }}" />
+           </div>
+       </form>
+ 
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+
+ </div>
+       
+     
+
+
+
+
+    <!-- Required common Js -->
+    <script src='{% static "js/jquery-2.2.3.min.js" %}'></script>
+    <!-- //Required common Js -->
+
+    <!-- Js for bootstrap working-->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- //Js for bootstrap working -->
+
+</body>
+
+</html>

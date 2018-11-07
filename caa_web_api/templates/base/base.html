@@ -1,0 +1,281 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="caa" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Common Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <link href="{% static 'css/fontawesome-all.css' %}" rel="stylesheet"> -->
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+           
+                    {% if user.is_authenticated %}
+                    <h4><i>Hi</i> : {{user.username|title }}</h4>
+                    {% endif %}
+                   
+               
+                <!-- <img src="{% static 'images/logo.png' %}" alt="" width="150px" height="auto" class="caa-img "> -->
+               
+            </div>
+            <!-- <div class="profile-bg"></div> -->
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="{% url 'home' %}">
+                            <i class="fa fa-lg fa-th-large"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-lg fa-user"></i>
+                        Stuff Members
+                        <i class="fa fa-lg fa-angle-down fa-pull-right"></i>
+                    
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="{% url '_admin:stuff-members' %}">View Stuff Members</a>
+                        </li>
+                        <li>
+                                <a href="{% url '_admin:register' %}">Add Stuff Members</a>
+                            </li>
+                      
+                    </ul>
+                </li>
+             
+                <li class="active">
+                    <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
+                            <i class="fa fa-lg fa-pencil-square-o"></i>
+                        Clickers
+                        <i class="fa fa-lg fa-angle-down fa-pull-right"></i>
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu1">
+                        <li>
+                            <a href="{% url 'clickers:multiple-questions' %}">Add Clickers</a>
+                        </li>
+                        <li>
+                            <a href="#">View Clickers</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
+                            <i class="fa fa-lg fa-money"></i>
+                        Fees Transactions
+                        <i class="fa fa-lg fa-angle-down fa-pull-right"></i>
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu3">
+                        <li>
+                            <a href="#">View Fees Transactions</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <!-- top-bar -->
+            <nav class="navbar navbar-default mb-xl-5 mb-4">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                           <i class="fa fa-lg fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- Search-from -->
+
+                    <div class="form-inline mx-auto search-form">
+                            <!-- <img src="{% static 'images/logo.png' %}" alt="" width="150px" height="auto" class="caa-img "> -->
+                        <!-- {% if user.is_authenticated %}
+                      <h2>Welcome : {{user.username|title }}</h2>
+                      {% endif %} -->
+                    </div>
+                    <!--// Search-from -->
+                    <ul class="top-icons-agileits-w3layouts float-right">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fa fa-lg fa-bell"></i>
+                                <span class="badge">4</span>
+                            </a>
+                            <div class="dropdown-menu top-grid-scroll drop-1">
+                                <h3 class="sub-title-w3-agileits">User notifications</h3>
+                                <a href="#" class="dropdown-item mt-3">
+                                    <div class="notif-img-agileinfo">
+                                        <img src="{% static 'images/clone.jpg' %}" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="notif-content-wthree">
+                                        <p class="paragraph-agileits-w3layouts py-2">
+                                            <span class="text-diff">John Doe</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                                        <h6>4 mins ago</h6>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item mt-3">
+                                    <div class="notif-img-agileinfo">
+                                        <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="notif-content-wthree">
+                                        <p class="paragraph-agileits-w3layouts py-2">
+                                            <span class="text-diff">Diana</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                                        <h6>6 mins ago</h6>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item mt-3">
+                                    <div class="notif-img-agileinfo">
+                                        <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="notif-content-wthree">
+                                        <p class="paragraph-agileits-w3layouts py-2">
+                                            <span class="text-diff">Steffie</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                                        <h6>12 mins ago</h6>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item mt-3">
+                                    <div class="notif-img-agileinfo">
+                                        <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="notif-content-wthree">
+                                        <p class="paragraph-agileits-w3layouts py-2">
+                                            <span class="text-diff">Jack</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                                        <h6>1 days ago</h6>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">view all notifications</a>
+                            </div>
+                        </li>
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fa fa-lg fa-user"></i>
+                            </a>
+                            <div class="dropdown-menu drop-3">
+                           
+                                <a href="#" class="dropdown-item mt-3">
+                                    <h4> Change Password</h4>
+                                </a>
+                                {% if user.is_authenticated %}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--// top-bar -->
+
+            <!-- main-heading -->
+          
+            <!--// main-heading -->
+
+            <!-- Error Page Content -->
+            <div class="blank-page-content">
+
+                <!-- Error Page Info -->
+                <div class="outer-w3-agile mt-3">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                <!--// Error Page Info -->
+
+            </div>
+
+            <!--// Error Page Content -->
+
+            <!-- Copyright -->
+            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
+                <p>© 2018 CAA . All Rights Reserved | Design by
+                    <a href="http//rubiem.com" target="_blank"> rubiem </a>
+                </p>
+            </div>
+            <!--// Copyright -->
+        </div>
+    </div>
+
+
+    <!-- Required common Js -->
+    <script src='{% static 'js/jquery-2.2.3.min.js' %}'></script>
+    <!-- //Required common Js -->
+
+    <!-- Sidebar-nav Js -->
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!--// Sidebar-nav Js -->
+
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+
+    <!-- Js for bootstrap working-->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- //Js for bootstrap working -->
+
+</body>
+
+</html>

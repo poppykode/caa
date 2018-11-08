@@ -6,13 +6,13 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import (
-    ClickerMultipleQuestions,
+    ClickerMultipleQuestions,ClickerMultipleQuestionsAnswers,
 )
 from .forms import (
     ClickerMultipleQuestionsForms,
 )
 from .serializers import (
-    ClickerMultipleQuestionSerilizer
+    ClickerMultipleQuestionSerilizer,ClickerMultipleQuestionsAnswersSerializer,
 )
 
 # Create your views here.
@@ -23,7 +23,7 @@ def clicker_multiple_questions_create(request):
         if form_clickers.is_valid():
             new_form = form_clickers.save(commit=False)
             new_form.user = request.user
-            new_form.save()
+            form_clickers.save()
             messages.success(request, 'Question has been successfully created!')
             return redirect('clickers:multiple-questions')
     else:
@@ -33,11 +33,26 @@ def clicker_multiple_questions_create(request):
 
 @login_required
 def clicker_multiple_questions_list (request):
-    user = self.request.user
-    clickers = ClickerMultipleQuestions.objects.filter(user=user)
+    user = request.user
+    user_id =user.id
+    clickers = ClickerMultipleQuestions.objects.filter(user_id=user_id)
     data = {}
     data['clickers_list'] = clickers
     return render(request,'clickers/clickers_list.html',data)
+
+@login_required
+def clicker_multiple_questions_results (request):
+    optionA = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionA').count() 
+    optionB = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionB').count()
+    optionC = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionC').count()
+    optionD = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionD').count()
+    data = {}
+    data['optionA'] = optionA
+    data['optionB'] = optionB
+    data['optionC'] = optionC
+    data['optionD'] = optionD
+    print(data)
+    return render(request,'clickers/clickers_results.html',data)
 
 #Enpointpoint
 
@@ -48,3 +63,13 @@ def clicker_multiple_questions_api_list(request):
         serializer = ClickerMultipleQuestionSerilizer(clickers, many=True)
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def clicker_multiple_answers_view(request):
+    if request.method =='POST':
+        serializer = ClickerMultipleQuestionsAnswersSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED) 
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+     

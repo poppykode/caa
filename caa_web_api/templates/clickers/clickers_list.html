@@ -3,31 +3,35 @@
 {% block title %}Clickers{% endblock %}
 {% block content %}
 <h2 class="main-title-w3layouts mb-2 text-center">
-    Staff Members
+    Posted Clickers
 </h2>
-<!-- {% if staff_list %}
+
+{% if clickers_list %}
 <table class="table">
     <thead>
 <tr>
-    <th>Username</th>
-    <th>Fist Name</th>
-    <th>Last Name</th>
-    <th>Email </th>
-    <th>Account Type </th>
+    <th>Course Name</th>
+    <th>Question</th>
+    <th>Option A</th>
+    <th>Option B </th>
+    <th>Option C </th>
+    <th>Option D </th>
+    <th>Results </th>
 </tr>
     </thead>
     <tbody>
-      {% for staff in staff_list %}
+      {% for clicker in clickers_list %}
         <tr>
-            <td>{{staff.username}}</td>
-            <td>{{staff.first_name}}</td>
-            <td>{{staff.last_name}}</td>         
-            <td> {{staff.email}}</td>
-            {% if staff.is_staff == True %}
-            <td> Admin</td>
-                {% else %}
-            <td> Lecturer</td>
-            {% endif %}
+            <td>{{clicker.courses}}</td>
+            <td>{{clicker.question}}</td>
+            <td>{{clicker.optionA}}</td>         
+            <td> {{clicker.optionB}}</td>
+            <td> {{clicker.optionC}}</td>
+            <td> {{clicker.optionD}}</td>
+            <td>
+                <input type="button" class="btn btn-success btn-block" value="View results">
+            </td>
+
         </tr>
 {% endfor %}
       
@@ -35,5 +39,5 @@
 </table>
 {% else %}
 <h4>No Users Available</h4>
-{% endif %} -->
+{% endif %} 
 {% endblock %}

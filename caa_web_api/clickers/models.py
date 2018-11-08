@@ -12,3 +12,13 @@ class ClickerMultipleQuestions(models.Model):
     optionB =  models.CharField(max_length=255)
     optionC = models.CharField(max_length=255)
     optionD =  models.CharField(max_length=255)
+
+class ClickerMultipleQuestionsAnswers(models.Model):
+    # question_id
+    question =  models.ForeignKey(ClickerMultipleQuestions,null=True,on_delete=models.CASCADE)
+    course_id = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255)
+
+ 
+
+

@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}answers{% endblock %}
+{% block content %}
+<h2 class="main-title-w3layouts mb-2 text-center">
+    Answer 
+</h2>
+<table class="table">
+    <thead>
+        <td>Option A</td>
+        <td>Option B</td>
+        <td>Option C</td>
+        <td>Option D</td>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{optionA}}</td>
+        <td>{{optionB}}</td>
+        <td>{{optionC}}</td>
+        <td>{{optionD}}</td>
+    </tr>
+</tbody>
+</table>
+{% endblock %}

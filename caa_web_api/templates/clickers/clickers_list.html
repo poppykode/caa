@@ -29,7 +29,7 @@
             <td> {{clicker.optionC}}</td>
             <td> {{clicker.optionD}}</td>
             <td>
-                <input type="button" class="btn btn-success btn-block" value="View results">
+                <a href="{% url 'clickers:questions-answers' id=clicker.id %}" class="btn btn-success btn-block">View results</a>
             </td>
 
         </tr>

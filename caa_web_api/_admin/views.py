@@ -34,8 +34,22 @@ def RegisterView(request):
 def StuffMembersListView(request):
     staff = User.objects.all()
     return render(request,'_admin/stafflist.html',{'staff':staff})
+    
+@login_required
+def EditUserView(request,user):
+    user = request.user.id
+    print(user)
+    user.is_active = False
+    messages.success(request, 'Profile successfully disabled.')
+    return redirect(reverse('_admin:stuff-members'))
 
-
+@login_required
+def disable_user_view(request,user):
+    user = request.user
+    print(type(user))
+    user.is_active = False
+    messages.success(request, 'Profile successfully disabled.')
+    return redirect(reverse('_admin:stuff-members'))
 #CBV
 class StuffMembersListView(LoginRequiredMixin,ListView):
     template_name = '_admin/stafflist.html'

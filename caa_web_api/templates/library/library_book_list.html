@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}List of Books{% endblock %}
+{% block content %}
+<h2 class="main-title-w3layouts mb-2 text-center">
+    List of Books
+</h2>
+    <hr>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="row">
+    {% if book_list %}
+    {% for lib in book_list %}
+    <div class="col-md-3">
+        <img src="{{lib.cover_image.url}}" alt="{{lib.title}}" height=200px;>
+        <h4><a href="{{lib.book_file.url}}" target="_blank"> {{lib.title|title}}</a></h4>
+        <small><b>{{lib.courses|title}}</b></small>
+        <br>
+        <small>{{lib.author|title}}</small>
+      <hr>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

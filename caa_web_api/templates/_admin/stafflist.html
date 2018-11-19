@@ -14,6 +14,7 @@
     <th>Fist Name</th>
     <th>Last Name</th>
     <th>Email </th>
+    <th>Status </th>
     <th>Account Type </th>
 </tr>
     </thead>
@@ -24,11 +25,18 @@
             <td>{{staff.first_name}}</td>
             <td>{{staff.last_name}}</td>         
             <td> {{staff.email}}</td>
+            <td>{{staff.is_active}}</td>
             {% if staff.is_staff == True %}
             <td> Admin</td>
                 {% else %}
             <td> Lecturer</td>
             {% endif %}
+            <td>
+                <a href="#" input="button" class="btn btn-success">Edit Profile</a>
+            </td>
+            <td>
+                    <a href="{% url '_admin:stuff-member-disable' user=staff.username %}" input="button" class="btn btn-warning">Disable</a>
+                </td>
         </tr>
 {% endfor %}
       

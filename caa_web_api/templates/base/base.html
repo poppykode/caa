@@ -77,11 +77,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="{% url '_admin:stuff-members' %}">View Stuff Members</a>
-                        </li>
+                      
                         <li>
                                 <a href="{% url '_admin:register' %}">Add Stuff Members</a>
+                            </li>
+                            <li>
+                                <a href="{% url '_admin:stuff-members' %}">View Stuff Members</a>
                             </li>
                       
                     </ul>
@@ -114,6 +115,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </li>
                     </ul>
                 </li>
+                <li>
+                        <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false">
+                         <i class="fa fa-lg fa-tablet"></i>
+                            Online library
+                            <i class="fa fa-lg fa-angle-down fa-pull-right"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu4">
+                            <li>
+                                <a href="{% url 'library:library-create' %}">Add Books</a>
+                            </li>
+                            <li>
+                                    <a href="{% url 'library:library-list' %}">View Books</a>
+                                </li>
+                        </ul>
+                    </li>
             </ul>
         </nav>
 

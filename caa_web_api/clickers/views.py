@@ -41,7 +41,8 @@ def clicker_multiple_questions_list (request):
     return render(request,'clickers/clickers_list.html',data)
 
 @login_required
-def clicker_multiple_questions_results (request):
+def clicker_multiple_questions_results (request,id):
+
     optionA = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionA').count() 
     optionB = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionB').count()
     optionC = ClickerMultipleQuestionsAnswers.objects.filter(answer='optionC').count()

@@ -1,0 +1,151 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="main-title-w3layouts mb-2 text-center">
+        Make fees payment
+    </h2>
+    <div class="container" style="margin-bottom:4px;">
+   
+            <div class="row net-margin-btm">
+        
+
+                <div class="col-md-12">
+                    
+                    <form id="rechargeform" action="" method="POST" class="form-group">
+                        {% csrf_token %}
+                        <div class="row net-form-padding">
+                             <div class="col-md-6">
+                                <div id="div_id_subject" class="form-group">
+                                        <label for="id_subject" class="control-label  requiredField">
+                                            Full Name<span class="asteriskField">*</span>
+                                        </label> 
+                                        <div class="controls ">
+                                            <input class="textinput textInput form-control" id="fullname"
+                                                name="fullname" type="text" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="div_id_subject" class="form-group">
+                                            <label for="id_subject" class="control-label  requiredField">
+                                                Amount<span class="asteriskField">*</span>
+                                            </label> 
+                                            <div class="controls ">
+                                                <input class="textinput textInput form-control" id="amount"
+                                                    name="amount" type="number" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="col-md-6">
+                                    <div id="div_id_subject" class="form-group">
+                                            <label for="student_number" class="control-label  requiredField">
+                                                Student Number<span class="asteriskField">*</span>
+                                            </label> 
+                                            <div class="controls ">
+                                                <input class="textinput textInput form-control" id="student_number"
+                                                    name="student_number" type="text" required="">
+                                            </div>
+                                        </div>
+                                </div>
+                       
+                        <div class="col-md-6">
+                            <div id="div_id_name" class="form-group">
+                                <label for="id_name" class="control-label  requiredField">
+                                    Email<span class="asteriskField">*</span>
+                                </label> 
+                                <div class="controls ">
+                                    <input class="textinput textInput form-control" id="email"
+                                        name="email" type="email" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                                <div id="div_id_subject" class="form-group">
+                                    <label for="id_subject" class="control-label  requiredField">
+                                        Phone Number<span class="asteriskField">*</span>
+                                    </label> 
+                                    <div class="controls ">
+                                        <input class="textinput textInput form-control" id="phone"
+                                            name="phone" type="text" required=""  maxlength="10">
+                                     <P id="errors"></P>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-12 ">
+                            <div class="form-group ">
+                                    <button type="submit" id="submit" class="btn btn-dark btn-block btn-outline-rounded nt-color-bottom" onclick="return clicked();"  style="background-color:#1B3664;color:#ffffff;">Pay fees</button>
+                                </div>
+                               
+                            </div>
+                        </div>
+                       
+                        <input type="hidden" id="reference" name="reference" value="">
+                        <input type="hidden" id="returnurl" name="returnurl" value="">
+                    </form>
+                 
+               
+                </div>
+   
+                </div>
+            
+</div>
+</div>
+</div>
+<script>
+ 
+    window.onload = function(){
+        // code goes here
+        $('#submit').on('click', function(e) {
+            e.preventDefault();
+            var receiving_phone_number = document.getElementById("phone").value;
+            var phoneRGEX = /^\d+$/;
+            var phoneResult = phoneRGEX.test(receiving_phone_number);
+            var bundle_price = document.getElementById("amount").value;  
+            var email = document.getElementById("email").value;     
+    
+            var c = confirm(' You are about to pay  ' +'$'+ bundle_price + ' to CAA from  your paynow account click ok to proceed or cancel to stop transaction. ');
+            if (c && phoneResult)
+
+            {
+
+            var reference = Math.random().toString(36).substr(7);
+            var returnurl = "http://127.0.0.1:8000/fees/fees_return/?reference="+reference;
+            $('#reference').val( reference );
+            $('#returnurl').val( returnurl );
+            var data = $('#rechargeform').serialize();
+            console.log(data);
+
+            $.ajax({
+                url: '/paynow/initiate/?'+data,
+                method: 'get',
+                // data: data
+            })
+            .done(function( data ) {
+                console.log(data);
+                location.href = data.url;
+            });
+        }
+
+else if(phoneResult == false)
+{
+    document.getElementById("errors").innerHTML = "Please enter digits only";
+    return false;
+}
+else if(receiving_phone_number.length !==10)
+{
+    document.getElementById("errors").innerHTML ="Please enter a phone number with 10 digits eg. 07XXXXXXXX";
+    return false;
+}
+else
+{
+    document.getElementById("errors").innerHTML ="Phone number should start with 07...";
+    return false;
+}
+
+        });
+    };
+   
+</script>
+    {% endblock %}

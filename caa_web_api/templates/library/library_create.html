@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}Add Book{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="main-title-w3layouts mb-2 text-center">
+    Add Book
+</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+  <div class="col-md-6">
+          {% if form_library.errors %}
+          <h1>Error occured</h1>
+          {% endif %}
+          
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+          </div>
+          {% endfor %}
+          {% endif %}
+  
+      <form enctype="multipart/form-data" action="." method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+              {{ form_library.courses|as_crispy_field}}
+              </div>
+          <div class="form-group">
+          {{ form_library.title|as_crispy_field}}
+          </div>
+          <div class="form-group">
+           {{ form_library.author|as_crispy_field}}
+          </div>
+          <div class="form-group">
+          {{ form_library.subject|as_crispy_field}}
+          </div>
+          <div class="form-group">
+            {{ form_library.book_file|as_crispy_field}}
+          </div>
+          <div class="form-group">
+           {{ form_library.cover_image|as_crispy_field}}
+          </div>
+          <input type="submit" value="Add book" class="btn btn-default"/>
+  </form>
+  </div>
+  <div class="col-md-3"></div>
+  </div>
+{% endblock %}

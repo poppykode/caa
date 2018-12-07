@@ -11,7 +11,7 @@ from .serializers import LibrarySerilizer
 @login_required
 def library_book_create(request):
     if request.method == 'POST':
-        form_library = LibraryForms(request.POST)
+        form_library = LibraryForms(request.POST,request.FILES)
         if form_library.is_valid():
             new_form = form_library.save(commit=False)
             new_form.user = request.user

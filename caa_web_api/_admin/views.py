@@ -14,6 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #FBV
 def LoginView(request):
     return render(request,'_admin/login.html')
+    
 @login_required
 def DashboardView(request):
     return render(request,'_admin/dashboard.html')

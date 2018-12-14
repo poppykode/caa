@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
@@ -39,6 +39,15 @@ def clicker_multiple_questions_list (request):
     data = {}
     data['clickers_list'] = clickers
     return render(request,'clickers/clickers_list.html',data)
+
+@login_required
+def clicker_delete(request, pk):
+    cl= get_object_or_404(ClickerMultipleQuestions, pk=pk)    
+    if request.method=='POST':
+        cl.delete()
+        messages.success(request, 'clicker has been successfully Deleted!')
+        return redirect('clickers:questions-list')
+    return render(request,'clickers/clicker_confirm_delete.html', {'data':cl})
 
 @login_required
 def clicker_multiple_questions_results (request,id):

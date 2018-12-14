@@ -54,12 +54,17 @@ INSTALLED_APPS = [
     '_user',
     'library',
     'fees',
+    'corsheaders',
+    'orientation',
+    'pastel',
+    'pastel_conn',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -68,6 +73,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'caa_web_api.urls'
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -93,6 +99,22 @@ WSGI_APPLICATION = 'caa_web_api.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'caa',
+        'USER': 'testing',
+        'PASSWORD': 'testing',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+    'students': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'students_db',
+        'USER': 'testing',
+        'PASSWORD': 'testing',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+    'moodle': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'caa',
         'USER': 'testing',
@@ -155,8 +177,6 @@ LOGOUT_REDIRECT_URL='/accounts/login/'
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
-
-
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (

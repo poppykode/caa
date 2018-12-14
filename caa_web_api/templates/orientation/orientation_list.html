@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}List of Videos{% endblock %}
+{% block content %}
+<h2 class="main-title-w3layouts mb-2 text-center">
+    List of Videos
+</h2>
+    <hr>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+    {% if orientation_list %}
+<table id="table_id" class="display table table-responsive" style="padding:4px;" >
+  <thead>
+      <tr>
+          <th>Video</th>
+          <th>Title</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+  </thead>
+  <tbody>
+    
+      {% for vids in orientation_list %}
+      <tr>
+          <td width="100%">
+              <video width="35%" controls poster ="{{vids.cover_image}}">
+                  <source src="{{vids.video.url}}" type="video/mp4">                    
+                </video>
+          </td>
+          <td><b>{{vids.title|title}}</b></td>
+          <td> <a href="{% url 'orientation:video-update' vids.id %}" class="btn btn-success">Edit </a></td>
+          <td> <a href="{% url 'orientation:video-delete' vids.id %}" class="btn btn-danger">Delete</a></td>
+      </tr>
+      {% endfor %}
+    
+  </tbody>
+</table>
+{% else %}
+<div class="row">
+    <h2>no videos uploaded</h2>
+</div>
+
+{% endif %}
+
+{% endblock %}

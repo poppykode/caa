@@ -44,7 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--//web-fonts-->
 </head>
 
-<body style="background:#006CB4; height:100%;">
+<body class="caa-bg-login">
  <div class="container">
 <div class="row caa-pt caa-pb">
     <div class="col-md-4"></div>
@@ -52,7 +52,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <hr>
        <img src="{% static 'images/logo.png' %}" alt="" width="150px" height="auto" class="caa-img ">
    <hr>
-  
+   {% if form.errors %}
+   <p>*Bad credentials</p>
+   <p>*fields can not be empty</p>
+   {% endif %}
        <form action="{% url 'login' %}" method="post">
                {% csrf_token %}
            <div class="form-group">
@@ -67,7 +70,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
                </div>
                <div class="form-check-label">
-                   <a href="forgot.html">forgot password?</a>
+                   <a href="#">forgot password?</a>
                </div>
            </div>
            <div style="padding-bottom:10px;">

@@ -24,7 +24,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
     </script>
     <!-- //Meta Tags -->
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
     <!-- Style-sheets -->
     <!-- Bootstrap Css -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -52,10 +53,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-           
-                    {% if user.is_authenticated %}
-                    <h4><i>Hi</i> : {{user.username|title }}</h4>
-                    {% endif %}
+                <div>
+                        <img src="{% static 'images/logo.png' %}" alt="" srcset="" class="img-responsive img-fluid caa-img-radius">
+                </div>
+        
                    
                
                 <!-- <img src="{% static 'images/logo.png' %}" alt="" width="150px" height="auto" class="caa-img "> -->
@@ -63,7 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <!-- <div class="profile-bg"></div> -->
             <ul class="list-unstyled components">
-                <li>
+                <li class="active">
                     <a href="{% url 'home' %}">
                             <i class="fa fa-lg fa-th-large"></i>
                         Dashboard
@@ -88,7 +89,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </ul>
                 </li>
              
-                <li class="active">
+                <li>
                     <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
                             <i class="fa fa-lg fa-pencil-square-o"></i>
                         Clickers
@@ -111,7 +112,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu3">
                         <li>
-                            <a href="#">View Fees Transactions</a>
+                            <a href="{% url 'fees:transactions' %}">View Fees Transactions</a>
                         </li>
                     </ul>
                 </li>
@@ -127,6 +128,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
                             <li>
                                     <a href="{% url 'library:library-list' %}">View Books</a>
+                                </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false">
+                 
+                         <i class="fa fa-lg fa-play "></i>
+                            Orientation Video
+                            <i class="fa fa-lg fa-angle-down fa-pull-right"></i>
+                           
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu5">
+                            <li>
+                                <a href="{% url 'orientation:orientation-create' %}">Add Video</a>
+                            </li>
+                            <li>
+                                    <a href="{% url 'orientation:orientation-list' %}">View Videos</a>
                                 </li>
                         </ul>
                     </li>
@@ -290,7 +309,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <!-- Js for bootstrap working-->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    {% block scripty %}
+    {% endblock %}
     <!-- //Js for bootstrap working -->
+    <script src="{% static 'js/custom.js' %}"></script>
+ 
 
 </body>
 

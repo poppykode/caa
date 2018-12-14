@@ -84,32 +84,35 @@ address {
 }
 
 /*--// common css --*/
+.caa-bg-login{
+	background: #feffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #feffff 0%, #a0d8ef 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #feffff 0%,#a0d8ef 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #feffff 0%,#a0d8ef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#a0d8ef',GradientType=0 ); /* IE6-9 */	
+	}
 
 .outer-w3-agile {
-	padding: 2em 1em;
+	padding: 4em 2em;
 	-webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
 	-moz-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
 	box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
 	background: #fff;
 }
-
 .btn-style {
 	background: #f75757;
 	color: #fff;
 	border-color: #e04646;
 }
-
 .btn-style:hover {
 	background: #e04646;
 }
-
 .paragraph-agileits-w3layouts {
 	font-size: 14px;
 	letter-spacing: 1px;
 	line-height: 31px;
 	color: #8c8c8c;
 }
-
 .sub-title-w3-agileits {
 	font-size: 1.7em;
 	letter-spacing: 2px;
@@ -134,7 +137,6 @@ h4.tittle-w3-agileits {
 }
 
 /*-- profile details --*/
-
 .profile-bg {
 	border: 1px solid #5d7cf7;
 	border-left: none;
@@ -2200,10 +2202,15 @@ ul.percentg-circles-w3ls .chart .figure {
 /*--//responsive--*/
 
 /* custom css */
+.caa-padding-table{
+	padding:20px;
+}
 .caa-background{
-	background-color: white;
+	background-color: #ffffff66;
 	}
-
+.caa-img-radius{
+	border-radius: 4%;
+}
 .caa-pt{
 	padding-top:2%;
 }

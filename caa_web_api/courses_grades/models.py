@@ -38,7 +38,7 @@ class McCourse(models.Model):
         db_table = 'mc_course'
 
     def __str__(self):
-        return self.fullname 
+        return self.shortname 
         
 class McCourseCategories(models.Model):
     id = models.BigAutoField(primary_key=True)

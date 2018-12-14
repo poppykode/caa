@@ -4,13 +4,13 @@ from courses_grades.models import McCourse
 
 # Create your models here.
 class Library (models.Model):
-    COURSES = (
-        ('accounting', 'accounting'),
-        ('auditing', 'auditing'),
-    )
+    # COURSES = (
+    #     ('accounting', 'accounting'),
+    #     ('auditing', 'auditing'),
+    # )
     user = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
-    courses = models.CharField(max_length=30, choices=COURSES, default='Please Course')
-    # courses = models.ForeignKey(McCourse,null=True,on_delete=models.CASCADE)
+    # courses = models.CharField(max_length=30, choices=COURSES, default='Please Course')
+    courses = models.ForeignKey(McCourse,null=True,on_delete=models.CASCADE)
     title =  models.CharField(max_length=255)
     author =  models.CharField(max_length=255)
     subject = models.CharField(max_length=255)

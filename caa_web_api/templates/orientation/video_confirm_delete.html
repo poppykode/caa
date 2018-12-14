@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}Delete Video{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+  <div class="col-md-6">
+        <form method="post">
+            {% csrf_token %}
+            <h3><b>Are you sure you want to delete?</b></h3>
+            <br>
+            <img src="{{data.cover_image.url}}" alt="{{data.title}}" height=200px;>
+    
+            <h4> {{data.title|title}}</h4>
+            <br>
+            <div>
+                <input type="submit" value="Delete Video" class="btn btn-danger"/>
+                <a href="{% url 'orientation:orientation-list' %}">Cancel</a>
+            </div>
+        </form>
+  </div>
+  <div class="col-md-3"></div>
+  </div>
+{% endblock %}

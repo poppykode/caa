@@ -29,6 +29,8 @@ urlpatterns = [
     path('accounts/',include('django.contrib.auth.urls')),
     path('api/v1/library/',include('library.urls')),
     path('fees/',include('fees.urls')),
+    path('orientation/',include('orientation.urls')),
+    # path('pastel/',include('pastel_conn.urls')),
      
     #endpoints
     path('api/v1/', include('courses_grades.urls')),

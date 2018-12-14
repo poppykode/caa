@@ -41,6 +41,7 @@ class ResultView(generic.View):
         status = request.POST["status"]
         pollurl = request.POST["pollurl"]
         paynowreference = request.POST["paynowreference"]
+        fullname = request.POST["fullname"]
 
         #skipping hash check for now
         print ("user has returned")
@@ -83,6 +84,7 @@ class PayNowView(generic.View):
             phone = request.GET["phone"]
             email = request.GET["email"]
             student_number = request.GET["student_number"]
+            fullname = request.GET["fullname"]
         except:
             resp = {"error": "Problem with transaction details"}
             return
@@ -152,6 +154,7 @@ class PayNowView(generic.View):
                     email=email,
                     student_number = student_number,
                     status=True,
+                    fullname=fullname,
                 )
         else:
             resp = {"error": "Status error"}

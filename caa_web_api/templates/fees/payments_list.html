@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}Transactions{% endblock %}
+{% block content %}
+<h2 class="main-title-w3layouts mb-2 text-center">
+   Fees Transactions
+</h2>
+
+{% if payment_list %}
+<table id="table_id" class="display table table-responsive" style="padding:4px;" >
+    <thead>
+<tr>
+    <th width="50%">student Number</th>
+    <th>Date</th>
+    <th>Reference</th>
+    <th>Amount Paid</th>
+    <th>Requesting Number</th>
+    <th>Full Name </th>
+</tr>
+    </thead>
+    <tbody>
+      {% for trans in payment_list %}
+        <tr>
+            <td>{{trans.student_number}}</td>
+            <td>{{trans.date}}</td>        
+            <td> {{trans.reference}}</td>
+            <td> {{trans.amount}}</td>
+            <td> {{trans.requesting_number}}</td>
+            <td> {{trans.fullname}}</td>
+            
+        </tr>
+     {% endfor %}
+      
+    </tbody>
+</table>
+{% else %}
+<h4>No Transactions Available</h4>
+{% endif %} 
+{% block scripty %}
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+{% endblock %}
+{% endblock %}
+

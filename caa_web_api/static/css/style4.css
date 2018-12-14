@@ -49,8 +49,8 @@ a:focus {
 .show>.btn-info.dropdown-toggle,
 .btn-info:hover {
     color: #fff;
-    background-color: #e04646;
-    border-color: #f75757;
+    background-color: #fd8638;
+    border-color: #ec6c16;
 }
 
 .line {
@@ -152,7 +152,8 @@ span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #4463dc;
+    /* background: #4463dc; */
+    background: #fff;
 }
 
 #sidebar .sidebar-header span {
@@ -187,7 +188,7 @@ span {
 #sidebar ul li.active>a,
 #sidebar a[aria-expanded="true"] {
     color: #fff;
-    background: #4463dc;
+    background: #FD8638;
 }
 
 ul.list-unstyled li a:focus a i.fa-caret-down {

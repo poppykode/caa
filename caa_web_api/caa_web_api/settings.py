@@ -34,7 +34,7 @@ SECRET_KEY = 'uc-mqn#7$m!6)6vk337ur#qubs@t&90g!_f!rer5$cu(nr%$qf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*196.29.35.115*]
 
 
 # Application definition
@@ -100,19 +100,19 @@ WSGI_APPLICATION = 'caa_web_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'caa',
-        'USER': 'testing',
-        'PASSWORD': 'testing',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'mycaadb-backup',
+        'USER': 'caadbusr',
+        'PASSWORD': 'Why5ape12',
+        'HOST': '127.0.0.1',
+        'PORT': '7306',
     },
     'students': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'students_db',
-        'USER': 'testing',
-        'PASSWORD': 'testing',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'cta_applications_new',
+        'USER': 'caadbusr',
+        'PASSWORD': 'Why5ape12',
+        'HOST': '127.0.0.1',
+        'PORT': '7306',
     },
     'moodle': {
         'ENGINE': 'django.db.backends.mysql',
